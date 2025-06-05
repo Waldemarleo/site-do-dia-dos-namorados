@@ -51,7 +51,7 @@ setInterval(criarConfete, 200);
     slideIndex++;
     if (slideIndex >= slides.length) { slideIndex = 0; }
     showSlide(slideIndex);
-    setTimeout(carrossel, 6000); // muda a cada 5s
+    setTimeout(carrossel, 3000); // muda a cada 3s
   }
 
   // Função para selecionar um slide manualmente
@@ -62,7 +62,7 @@ setInterval(criarConfete, 200);
 
   // Inicializa carrossel automático
   showSlide(slideIndex);
-  setTimeout(carrossel, 6000);
+  setTimeout(carrossel, 3000);
 
   // Variáveis para capturar o toque
   let startX = 0;
@@ -166,25 +166,21 @@ audios.forEach(audio => {
 });
 
 
-// Loop automático
-setInterval(avancarLuiza, 3000);
-
-  function atualizarContagem() {
+function atualizarContagem() {
+  const dataInicio = new Date(2024, 5, 1, 0, 0, 0); // 1 de junho de 2024
   const agora = new Date();
-  const anoAlvo = agora.getFullYear() + 1; // sempre próximo ano
-  const dataAlvo = new Date(anoAlvo, 5, 1, 0, 0, 0); // Junho é mês 5 (começa do zero)
 
-  const tempoRestante = dataAlvo - agora;
+  const tempoPassado = agora - dataInicio;
 
-  const segundos = Math.floor((tempoRestante / 1000) % 60);
-  const minutos = Math.floor((tempoRestante / 1000 / 60) % 60);
-  const horas = Math.floor((tempoRestante / (1000 * 60 * 60)) % 24);
-  const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+  const segundos = Math.floor((tempoPassado / 1000) % 60);
+  const minutos = Math.floor((tempoPassado / 1000 / 60) % 60);
+  const horas = Math.floor((tempoPassado / (1000 * 60 * 60)) % 24);
+  const dias = Math.floor(tempoPassado / (1000 * 60 * 60 * 24));
 
-  document.getElementById('dias').innerHTML = dias + "<span>Dias</span>";
-  document.getElementById('horas').innerHTML = horas + "<span>Horas</span>";
-  document.getElementById('minutos').innerHTML = minutos + "<span>Minutos</span>";
-  document.getElementById('segundos').innerHTML = segundos + "<span>Segundos</span>";
+  document.getElementById('dias').innerHTML = dias + "<span> Dias</span>";
+  document.getElementById('horas').innerHTML = horas + "<span> Horas</span>";
+  document.getElementById('minutos').innerHTML = minutos + "<span> Minutos</span>";
+  document.getElementById('segundos').innerHTML = segundos + "<span> Segundos</span>";
 }
 
 // Atualiza a contagem a cada segundo
